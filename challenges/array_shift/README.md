@@ -12,3 +12,5 @@ The solution is O(n) for time and storage. Both increase in a linear manner as t
 
 ## Solution
 
+![solution](https://github.com/scott-currie/data_structures_and_algorithms/raw/master/assets/array_shift.jpg)
+
