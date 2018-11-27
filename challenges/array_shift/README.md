@@ -1,5 +1,4 @@
 # Insert and shift middle index of array
-<!-- Short summary or background information -->
 
 ## Challenge
 Write a function called insertShiftArray which takes in an array and the value to be added. Return an array with the new value added at the middle index.
@@ -12,4 +11,4 @@ I found the middle index by dividing the length of the list by 2, then got the c
 The solution is O(n) for time and storage. Both increase in a linear manner as the number of list items grows.
 
 ## Solution
-<!-- Embedded whiteboard image -->
+
