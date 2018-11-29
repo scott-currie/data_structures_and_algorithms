@@ -1,6 +1,6 @@
 def binary_search(search_list, search_key):
-    """Find the index of a value of a key in a list usings a
-    binary search algorithg. Returns the index of the value if
+    """Find the index of a value of a key in a sorted list using
+    a binary search algorithm. Returns the index of the value if
     found. Otherwise, returns -1.
     """
     left_idx, right_idx = 0, len(search_list) - 1
