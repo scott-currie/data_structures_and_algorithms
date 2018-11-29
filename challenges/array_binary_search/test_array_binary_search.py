@@ -30,10 +30,16 @@ def test_binary_search_4():
     assert binary_search([1, 2, 3], 4) == -1
 
 
-# def test_binary_search_4():
-#     """ 10 elements, key in right half.
-#     """
-#     test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-#     key = 7
-#     actual = 6
-#     assert binary_search(test_list, key) == actual
+def test_binary_search_4():
+    """ 10 elements, key in right half."""
+    test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    key = 7
+    actual = 6
+    assert binary_search(test_list, key) == actual
+
+def test_binary_search_5():
+    """9 elements, key at idx=0."""
+    test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    key = 1
+    actual = 0
+    assert binary_search(test_list, key) == actual
