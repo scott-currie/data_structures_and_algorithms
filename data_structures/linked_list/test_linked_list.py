@@ -35,7 +35,14 @@ def test_ll_instance_has_none_value_head(empty_ll):
 
 
 def test_ll_str_method(empty_ll):
-    assert str(empty_ll) == f'Linked List: Head val - { empty_ll.head }'
+    assert str(empty_ll) == '[]'
+
+
+def test_ll_str_method():
+    """Test the rewritten str method behaves like the one for lists."""
+    ll = LinkedList([1, 2, 3])
+    expected = '[3, 2, 1]'
+    assert str(ll) == expected
 
 
 def test_size_of_empty_ll(empty_ll):
@@ -61,12 +68,43 @@ def test_iterable_as_argument():
     assert ll.head.val == 4
     assert len(ll) == 4
 
+
 def test_ll_includes_finds_target():
     """Test LinkedList instance method includes returns true if value to find is in the list."""
     ll = LinkedList([1, 2, 3, 4])
     assert ll.includes(4)
 
+
 def test_ll_includes_returns_false():
     """Test LinkedList instance method includes returns false if value to find is not in the list."""
     ll = LinkedList([1, 2, 3, 4])
     assert not ll.includes(9)
+
+
+def test_append_includes_val_non_empty_list():
+    """Add a new value to LL with insert method, then test the LL includes the new value."""
+    ll = LinkedList([1, 2, 3])
+    ll.insert(4)
+    assert ll.includes(4)
+
+
+def test_append_includes_val_empty_list(empty_ll):
+    """Add a new value to empty LL with insert method, then test the LL includes the new value."""
+    empty_ll.append(4)
+    assert empty_ll.includes(4)
+
+
+def test_insert_before_non_empty_list():
+    """Test the str representation of non-empty LL matches expected after insert_before is called on it."""
+    ll = LinkedList([1, 2, 3])
+    ll.insert_before(3, 4)
+    assert ll.includes(4)
+    assert str(ll) == '[4, 3, 2, 1]'
+
+
+def test_insert_after_non_empty_list():
+    """Test the str representation of empty LL matches expected after insert_before is called on it."""
+    ll = LinkedList([1, 2, 3])
+    ll.insert_after(2, 4)
+    assert ll.includes(4)
+    assert str(ll) == '[3, 2, 4, 1]'

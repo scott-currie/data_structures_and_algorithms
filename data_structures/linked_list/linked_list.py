@@ -4,6 +4,7 @@ from node import Node
 class LinkedList(object):
     """Implements a singly linked list in Python.
     """
+
     def __init__(self, iterable=None):
         self.head = None
         self._size = 0
@@ -18,7 +19,16 @@ class LinkedList(object):
             self.insert(val)
 
     def __str__(self):
-        output = f'Linked List: Head val - { self.head }'
+        """Override __str__ to mimic behavior of list.__str__."""
+        # output = f'Linked List: Head val - { self.head }'"""
+        if self._size == 0:
+            return '[]'
+        current = self.head
+        output = '['
+        while current._next:
+            output += str(current.val) + ', '
+            current = current._next
+        output += str(current.val) + ']'
         return output
 
     def __repr__(self):
@@ -53,3 +63,59 @@ class LinkedList(object):
             else:
                 cur = cur._next
         return False
+
+    def append(self, val):
+        """Instance method on LinkedList. Add a new node with value val at the end of the list.
+
+        input: val (any type) value of new node
+        returns: none
+        """
+        current = self.head
+        # Handle empty list
+        if current is None:
+            self.head = Node(val)
+            return
+        # Traverse list to end
+        while current._next:
+            current = current._next
+        current._next = Node(val)
+        self._size += 1
+
+    def insert_before(self, val, newVal):
+        """Instance method on LinkedList. Add a new node with value newVal immediately before node with value val.
+
+        input: val (any type) value to find in the list
+        input: newVal (anyType) value to insert into list
+        returns: none
+        """
+        current = self.head
+        # Handle value of current node is val
+        if current.val == val:
+            self.insert(newVal)
+            return
+        while current._next:
+            print(current._next.val)
+            if current._next.val == val:
+                print('Found it.')
+                new_node = Node(newVal, current._next)
+                current._next = new_node
+                self._size += 1
+                return
+            else:
+                current = current._next
+
+    def insert_after(self, val, newVal):
+        """Instance method on LinkedList. Add a new node with value newVal immediately after node with value val.
+
+        input: val (any type) value to find in the list
+        input: newVal (anyType) value to insert into list
+        returns: none
+        """
+        current = self.head
+        while current._next:
+            if current.val == val:
+                new_node = Node(newVal, current._next)
+                current._next = new_node
+                self._size += 1
+                return
+            current = current._next
