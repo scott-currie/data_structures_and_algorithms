@@ -71,6 +71,11 @@ class LinkedList(object):
         returns: none
         """
         current = self.head
+        # Handle empty list
+        if current is None:
+            self.head = Node(val)
+            return
+        # Traverse list to end
         while current._next:
             current = current._next
         current._next = Node(val)
