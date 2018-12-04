@@ -17,3 +17,20 @@ All solutions involved traversing the list from head to tail. Storage for all me
 ![solution](https://github.com/scott-currie/data_structures_and_algorithms/raw/master/assets/ll_insertions_1.jpg)
 
 ![solution](https://github.com/scott-currie/data_structures_and_algorithms/raw/master/assets/ll_insertions_2.jpg)
+
+# kth From End
+Extend the LinkedList class to find the value of the node k nodes from the end.
+
+## Challenge
+Write a method for the Linked List class which takes a number, k, as a parameter. Return the node’s value that is k from the end of the linked list. You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
+
+## Approach & Efficiency
+Iterate over the list once to accumulate a node count. Iterate over the list length - k times, then return the value of current at that time.
+Time = O(2n) worst case
+Storage = O(n)
+
+
+## Solution
+![solution](https://github.com/scott-currie/data_structures_and_algorithms/raw/master/assets/ll_kth_from_end.jpg)
+
+![solution](https://github.com/scott-currie/data_structures_and_algorithms/raw/master/assets/ll_insertions_2.jpg)

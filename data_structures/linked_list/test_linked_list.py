@@ -108,3 +108,21 @@ def test_insert_after_non_empty_list():
     ll.insert_after(2, 4)
     assert ll.includes(4)
     assert str(ll) == '[3, 2, 4, 1]'
+
+
+def test_kth_from_end_k_too_big_raises_exception(small_ll):
+    """Test kth_from_end with small_ll and k > length of list raises IndexError."""
+    with pytest.raises(IndexError):
+        small_ll.kth_from_end(5)
+
+
+def test_kth_from_end_k_lt_length():
+    """Test kth_from_end with small_ll and k less than len(small_ll)"""
+    ll = LinkedList([2, 8, 3, 1])
+    expected = 3
+    assert ll.kth_from_end(2) == expected
+
+
+def test_kth_from_end_k_is_0(small_ll):
+    expected = 1
+    assert small_ll.kth_from_end(0) == expected

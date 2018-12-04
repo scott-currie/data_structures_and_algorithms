@@ -119,3 +119,20 @@ class LinkedList(object):
                 self._size += 1
                 return
             current = current._next
+
+    def kth_from_end(self, k):
+        """
+        """
+        current = self.head
+        length = 1
+        while current._next:
+            current = current._next
+            length += 1
+        if k > length:
+            raise IndexError
+        else:
+            current = self.head
+            # Range starts at 1, since current is index 0
+            for i in range(1, length - k):
+                current = current._next
+            return current.val
