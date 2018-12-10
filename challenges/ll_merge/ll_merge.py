@@ -1,14 +1,23 @@
 from .linked_list import LinkedList
-from .node import Node
 
 
 def ll_merge(ll1, ll2):
+    """Merge two linked lists of arbitrary size, starting with the first node
+    of the first list passed in and alternating through all remaining nodes
+    in both lists.
+
+    Parameters:
+        ll1 (LinkedList): starting list to merge
+        ll2 (LinkedList): second list to merge
+
+    Returns:
+        (LinkedList): new list with elements from both lists merged
+    """
     merged = LinkedList()
     c1 = ll1.head
     c2 = ll2.head
 
     while c1 or c2:
-        print('ll1=', ll1)
         if c1:
             # If merged head is None, it's our first pass
             if merged.head is not None:
@@ -38,18 +47,10 @@ def ll_merge(ll1, ll2):
                 c2 = c2._next
                 # Move mc to its next
                 mc = mc._next
-                mc._next = None
                 merged._size += 1
             else:
                 merged.head = c2
                 mc = merged.head
                 c2 = c2._next
-                mc._next = None
                 merged._size += 1
-        print('merged=', merged)
-
-
-
-    print(merged)
     return merged
-
