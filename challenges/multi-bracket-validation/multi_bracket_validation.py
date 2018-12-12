@@ -1,6 +1,13 @@
 from stack import Stack
 
+
 def multi_bracket_validation(input_str):
+    """Parse a string to determine if the grouping sequences within it are
+    balanced.
+
+    param: input_str (str) string to parse
+    return: (boolean) True if input_str is balanced, else False
+    """
     if type(input_str) is not str:
         raise TypeError('Input must be of type str')
     openers = ('[', '{', '(')
@@ -20,4 +27,3 @@ def multi_bracket_validation(input_str):
     if stack.top is None:
         return True
     return False
-
