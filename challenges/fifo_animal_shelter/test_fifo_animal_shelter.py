@@ -24,8 +24,10 @@ def test_empty_shelter_len_zero(empty_shelter):
 def test_empty_shelter_dequeue_is_none(empty_shelter):
     assert empty_shelter.dequeue('cat') is None
 
+
 def test_dcd_has_dequeue(dog_cat_dog):
     assert dog_cat_dog.dequeue
+
 
 def test_enqueue_dequeue_match():
     shelter = AnimalShelter()
@@ -33,6 +35,7 @@ def test_enqueue_dequeue_match():
     assert shelter.dequeue('dog').val == 'dog'
     assert shelter.dequeue('dog') is None
     assert shelter.dequeue('cat') is None
+
 
 def test_enqueue_dequeue_reverse_order():
     shelter = AnimalShelter()
@@ -42,3 +45,12 @@ def test_enqueue_dequeue_reverse_order():
     assert shelter.dequeue('dog').val == 'dog'
     assert shelter.dequeue('cat').val == 'cat'
     assert shelter.dequeue('dog') is None
+
+
+def test_dequeue_without_pref():
+    shelter = AnimalShelter()
+    shelter.enqueue('cat')
+    shelter.enqueue('dog')
+    shelter.enqueue('dog')
+    shelter.enqueue('dog')
+    assert shelter.dequeue().val == 'cat'
