@@ -5,7 +5,7 @@ class AnimalShelter(Queue):
     def __init__(self):
         super().__init__()
 
-    def dequeue(self, pref):
+    def dequeue(self, pref=None):
         """Override dequeue function of Queue class. Dequeue the nodes until
         the node with value matching pref is found.
 
@@ -13,12 +13,20 @@ class AnimalShelter(Queue):
         """
         print(self.string_values())
         print('Dequeue', pref)
+        found_pet = None
+        # If pref not provided, return front node
+        if pref is None:
+            if self.front is not None:
+                found_pet = self.front
+                self.front = self.front._next
+                self._size -= 1
+            return found_pet
+        # If pref not in approved pet list, return None
         if pref not in ['dog', 'cat']:
             return None
-        found_pet = None
+        # Look for the matching pet
         tmp_stack = None
         while self.front:
-
             # Front is node we want
             if self.front.val == pref:
                 # Dequeue it and keep a reference
