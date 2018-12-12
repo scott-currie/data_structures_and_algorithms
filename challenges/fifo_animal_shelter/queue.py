@@ -33,12 +33,14 @@ class Queue(object):
             raise ValueError('Node value cannot be None')
             return
         node = Node(value)
-        node._next = self.back
-        self.back = node
-        self._size += 1
-        # If the new node is the first, it's also the front
-        if self._size == 1:
+        # node._next = self.back
+        if self.back:
+            self.back._next = node
+            self.back = self.back._next
+        else:
+            self.back = node
             self.front = node
+        self._size += 1
 
     def dequeue(self):
         """Remove the node at the front of the list and return it.
