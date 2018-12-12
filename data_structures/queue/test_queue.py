@@ -58,3 +58,11 @@ def test_queue_queue_val_expected():
     q = Queue()
     q.enqueue(expected)
     assert q.dequeue().val == expected
+
+
+def test_multiple_dequeue(short_queue):
+    """Dequeue all nodes in queue and test their values."""
+    assert short_queue.dequeue().val == 1
+    assert short_queue.dequeue().val == 2
+    assert short_queue.dequeue().val == 3
+    assert short_queue.dequeue() is None
