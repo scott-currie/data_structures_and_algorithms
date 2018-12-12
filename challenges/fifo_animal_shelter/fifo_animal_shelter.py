@@ -11,8 +11,8 @@ class AnimalShelter(Queue):
 
         return: node closest to front with value pref, None if queue is empty
         """
-        self.print_values()
-        print('Dequeue', pref, '\n')
+        print(self.string_values())
+        print('Dequeue', pref)
         if pref not in ['dog', 'cat']:
             return None
         found_pet = None
@@ -48,11 +48,13 @@ class AnimalShelter(Queue):
                 tmp_node._next = tmp_stack
                 # Point tmp_stack to new top node
                 tmp_stack = tmp_node
-        self.print_values()
+        print(self.string_values())
         return found_pet if found_pet else None
 
-    def print_values(self):
+    def string_values(self):
+        st = ''
         current = self.back
         while current:
-            print(current.val)
+            st += f'{current.val}->'
             current = current._next
+        return st + 'x'
