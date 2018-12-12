@@ -21,8 +21,6 @@ def multi_bracket_validation(input_str):
             # If it's an opener, but its opposite isn't on the stack, return False
             if stack.pop().val != opposites[c]:
                 return False
-            # # Pop the symbol if c is its opposite and keep going
-            # stack.pop()
     # If we get here, and the top is None, all symbols found opposites
     if stack.top is None:
         return True
