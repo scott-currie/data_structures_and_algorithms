@@ -8,6 +8,7 @@ pytest = "*"
 
 [packages]
 pytest = ""
+coverage = "*"
 
 [requires]
 python_version = "3.6"
