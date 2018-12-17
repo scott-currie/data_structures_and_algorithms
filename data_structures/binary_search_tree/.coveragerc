@@ -1,0 +1,3 @@
+[run]
+source=binary_search_tree
+omit=test*
