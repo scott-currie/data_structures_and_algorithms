@@ -1,3 +1,6 @@
+from data_structures_and_algorithms.data_structures.queue.queue import Queue
+
+
 class Node(object):
     """Simple node object suitable for binary tree.
     """
@@ -59,10 +62,10 @@ class BST(object):
         """Perform post-order traversal of nodes. Recursively calls post_order on the
         current node until None is reached, then returns down the stack to the next valid
         node.
-    
+
         input: node(Node): optional. The current node in the traversal.
         input: operation(function): optional. The operation to perform on nodes.
-        return: None 
+        return: None
         """
         if node is None:
             return
@@ -116,3 +119,24 @@ class BST(object):
                     current.right = node
                     self._size += 1
                     return self._size
+
+    def find_max_value(self):
+        """Traverse a binary tree and return the maximum value of its nodes.
+
+        input: max (int): optional, max value at the time the function is called
+        return: max (int): maximum value on this iteration
+        return: None if tree is empty
+        """
+        if len(self) == 0:
+            return None
+        max = self.root.val
+        q = Queue()
+        q.enqueue(self.root)
+        while len(q) > 0:
+            cur = q.dequeue().val
+            max = cur.val if cur.val > max else max
+            if cur.left:
+                q.enqueue(cur.left)
+            if cur.right:
+                q.enqueue(cur.right)
+        return max
