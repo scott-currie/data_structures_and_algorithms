@@ -1,4 +1,4 @@
-from node import Node
+from .node import Node
 
 
 class Queue(object):
@@ -33,7 +33,6 @@ class Queue(object):
             raise ValueError('Node value cannot be None')
             return
         node = Node(value)
-        # node._next = self.back
         if self.back:
             self.back._next = node
             self.back = self.back._next
@@ -51,4 +50,7 @@ class Queue(object):
         if self.front:
             self.front = self.front._next
             self._size -= 1
+            if self._size == 0:
+                self.front = None
+                self.back = None
         return node

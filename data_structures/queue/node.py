@@ -8,7 +8,6 @@ class Node(object):
         :param val: data value to store in the node
         :param _next: reference to the next node, defaults to None
         """
-        print('val=', val)
         self.val = val
         self._next = _next
 
