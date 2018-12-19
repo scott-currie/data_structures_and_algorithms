@@ -123,8 +123,7 @@ class BST(object):
     def find_max_value(self):
         """Traverse a binary tree and return the maximum value of its nodes.
 
-        input: max (int): optional, max value at the time the function is called
-        return: max (int): maximum value on this iteration
+        return: max (int): maximum value on after visiting all nodes
         return: None if tree is empty
         """
         if len(self) == 0:
