@@ -9,11 +9,13 @@
     post_order: Traverse the tree in post-order and perform some operation on each node.
 
     in_order: Traverse the tree in order and perform some operation on each node.
-    
+
+    find_max_value: Traverse the tree in breadth-first order and return the max value of all nodes.
+
 ## Requirements
     1. Python >= 3.6
     2. pipenv
     3. pytest
-    
+
 ## Changelog
     12-16-2018 15:30:00 - Finished implementation
