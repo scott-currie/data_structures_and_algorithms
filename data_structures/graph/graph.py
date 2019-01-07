@@ -1,3 +1,6 @@
+import queue
+
+
 class Graph:
     """Implements a graph data type. Nodes will be represented as dict
     keys, with values stored as dicts with keys as neighboring nodes
@@ -72,3 +75,25 @@ class Graph:
         """
         if self.has_vert(val):
             return tuple(n for n in self.graph[val])
+
+    def breadth_first(self, origin):
+        """Perform a breadth first traversal over the tree.
+
+        :input: origin: the node to start traversing
+        :return: a list of nodes in the order they were visited
+        """
+        if not self.has_vert(origin):
+            return []
+        visited = []
+        to_visit = queue.Queue()
+        to_visit.put((origin, self.graph[origin]))
+        while not to_visit.empty():
+            node, adjacents = to_visit.get()
+            if node not in visited:
+                visited.append(node)
+            # print(node, adjacents, visited)
+            for adj in sorted(adjacents.keys()):
+                if adj not in visited:
+                    print('putting', adj)
+                    to_visit.put((adj, self.graph[adj]))
+        return visited

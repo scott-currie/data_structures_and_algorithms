@@ -65,3 +65,10 @@ def test_get_neighbors_failure_case(graph_empty):
     # Vert that exists, but has no neighbors returns empty tuple
     graph_empty.add_vert('A')
     assert graph_empty.get_neighbors('A') == ()
+
+
+def test_breadth_first(graph_empty, graph_three):
+    assert graph_three.breadth_first('C') == ['C', 'A', 'D', 'E', 'B']
+    assert graph_three.breadth_first('B') == ['B', 'A', 'E', 'C', 'D']
+    assert graph_empty.breadth_first('C') == []
+    assert graph_three.breadth_first('Q') == []

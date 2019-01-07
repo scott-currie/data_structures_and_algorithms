@@ -35,3 +35,16 @@ def graph_two():
         'G': {'F': 20}
     }
     return g
+
+
+@pytest.fixture
+def graph_three():
+    g = Graph()
+    g.graph = {
+        'A': {'B': 1, 'C': 1},
+        'B': {'A': 1, 'E': 1},
+        'C': {'A': 1, 'E': 1, 'D': 1},
+        'D': {'C': 1},
+        'E': {'B': 1, 'C': 1}
+    }
+    return g
