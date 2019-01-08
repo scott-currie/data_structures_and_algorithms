@@ -41,11 +41,10 @@ def test_add_edge_success_returns_true(graph_empty, graph_one):
     assert graph_empty.add_edge('A', 'B', 5) is True
 
 
-def test_add_existing_edge_returns_false(graph_empty):
+def test_add_edge_bad_vertex_returns_false(graph_empty):
     graph_empty.add_vert('A')
     graph_empty.add_vert('B')
-    assert graph_empty.add_edge('A', 'B', 5) is True
-    assert graph_empty.add_edge('A', 'B', 5) is False
+    assert graph_empty.add_edge('A', 'Q', 5) is False
 
 
 def test_add_vert_non_hashable_value_raises_exception(graph_empty):
