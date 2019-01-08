@@ -46,7 +46,7 @@ class Graph:
         return: True if val is a key
         return: False if val not found
         """
-        return True if val in self.graph else False
+        return val in self.graph
 
     def add_edge(self, v1, v2, weight):
         """Add an edge with supplied weight between two vertices. Both vertices
@@ -56,15 +56,14 @@ class Graph:
         input: v1, vertex to serve as starting point
         input: v2, vertex to serve as end point
         weight: int, weight to apply to the edge
-        return: True if edge was added successfully
+        return: True if edge was added successfully or already exist
         return: False if edge add failed
         """
         # Ensure both vertices exist
         if self.has_vert(v1) and self.has_vert(v2):
-            # Ensure the edge doesn't already exist
-            if v2 not in self.graph[v1]:
-                self.graph[v1][v2] = weight
-                return True
+            self.graph[v1][v2] = weight
+            self.graph[v2][v1] = weight
+            return True
         return False
 
     def get_neighbors(self, val):
