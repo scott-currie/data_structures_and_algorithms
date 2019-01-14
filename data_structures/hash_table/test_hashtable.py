@@ -1,4 +1,4 @@
-from .hasthable import HashTable
+from .hashtable import HashTable
 import pytest
 
 
