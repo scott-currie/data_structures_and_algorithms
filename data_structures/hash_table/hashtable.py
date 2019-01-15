@@ -1,4 +1,4 @@
-import hashlib
+import decimal, hashlib
 
 
 class HashTable(object):
@@ -47,6 +47,9 @@ class HashTable(object):
         :param k: the key to hash
         :return: integer index of the list
         """
+        hashables = [int, float, decimal, complex, bool, str, tuple, range, frozenset, bytes]
+        if type(k) not in hashables:
+            raise TypeError('Key must be of type: int, float, decimal, complex, bool, str, tuple, range, frozenset, bytes')
         if not isinstance(k, str):
             k = str(k)
         hash_val = hashlib.md5(bytes(k, encoding='UTF-8'))
@@ -70,6 +73,27 @@ class HashTable(object):
                 return node.val[1]
             node = node.next
         return None
+
+    def remove(self, k):
+        """Remove the key, value pair with specified key.
+
+        :param k: key to search for
+        :return: True if key found and removed, else False
+        """
+        node = self.table[self.get_idx(k)]
+        print('Looking for {}'.format(k) )
+        print(node.val)
+        if node.val[0] == k:
+            print('Found {}'.format(k))
+            # unlink this node. If it is the only value here, set table at that index to None
+            if node.next is None:
+                self.table[self.get_idx(k)] = None
+        while node.next is not None:
+            if node.next.val[0] == k:
+                if node.next.next is None:
+                    node.next = None
+                else:
+                    node.next = node.next.next
 
 class Node(object):
     """Simple node class to populate HashTable."""
