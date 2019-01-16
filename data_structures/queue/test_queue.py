@@ -1,6 +1,6 @@
 from node import Node
 import pytest
-from queue import Queue
+from .queue import Queue
 
 
 @pytest.fixture()
