@@ -16,5 +16,5 @@ def repeated_word(string):
     for word in string.split():
         if ht.get(word) is not None:
             return word
-        ht.add(word, 0)
+        ht.set(word, 0)
     return None

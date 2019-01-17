@@ -19,11 +19,12 @@ class HashTable(object):
         """
         return '{}'
 
-    def add(self, k, v):
-        """Add a new key/value pair to HashTable.
+    def set(self, k, v):
+        """Assign a key/value pair in the HashTable. Create a new pair if the key doesn't already exsist. If the key
+        exists, update its associated value.
 
-        :param k: key to add in HashTable
-        :param v: value to add in HashTable
+        :param k: key to set/add in HashTable
+        :param v: value to assign in HashTable
         :return: True if k, v added, else False
         """
         idx = self.get_idx(k)
@@ -32,7 +33,8 @@ class HashTable(object):
             node = self.table[idx]
             while node is not None:
                 if node.val[0] == k:
-                    raise KeyError('The supplied key already exists.')
+                    # raise KeyError('The supplied key already exists.')
+                    node.val = (k, v)
                 if node.next is None:
                     node.next = Node((k, v))
                     return True
